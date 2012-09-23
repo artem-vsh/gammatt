@@ -107,15 +107,15 @@ Sets = RawSets;
 end
 
 %% function to get channels with some specific labels
-function Indeces = GrepChannels(Labels, SourceChannels)
+function Indices = GrepChannels(Labels, SourceChannels)
 
 % preallocate indicies
-Indeces = zeros(length(Labels), 1);
+Indices = zeros(length(Labels), 1);
 
 for i = 1:length(Labels)
     for j = 1:length(SourceChannels)
         if strcmp(Labels(i), SourceChannels(j).labels)
-            Indeces(i) = j;
+            Indices(i) = j;
             break;
         end
     end
