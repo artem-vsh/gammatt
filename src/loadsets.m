@@ -54,31 +54,12 @@ for FileOffset = 1:length(Files)
         %% preinitialize preprocessing inputs
         % grep requested channels
         NeededChannels = GrepChannels(Channels, elem.chanlocs);
-        % preallocate space for result (performance)
-        ResultingData   = zeros( ...
-            length(NeededChannels), ...
-            size(elem.data, 2), ...
-            size(elem.data, 3));
-        % TODO: copy struct's structure dynamicaly... how?
-        ResultingLocations    = struct( ...
-            'labels',     [], 'ref',       [], 'type',    [], ...
-            'sph_radius', [], 'sph_theta', [], 'sph_phi', [], ...
-            'theta',      [], 'radius',    [],                ...
-            'X',          [], 'Y',         [], 'Z',       [], ...
-            'urchan',     [] );
         
-        %% reform into desired structure
-        for i = 1:length(NeededChannels)
-            % copy each channel's data and name
-            ResultingData(i,:)    = elem.data(NeededChannels(i), :, :);
-            ResultingLocations(i) = elem.chanlocs(NeededChannels(i));
-        end
-        
-        % overwrite loaded element, drop unneeded channels
+        %% overwrite loaded element, drop unneeded channels
         % "monkey patching" of some sort
         % see http://en.wikipedia.org/w/index.php?oldid=484042614
-        elem.data     = ResultingData;
-        elem.chanlocs = ResultingLocations;
+        elem.data     = elem.data(NeededChannels, :, :);
+        elem.chanlocs = elem.chanlocs(NeededChannels);
         elem.nbchan   = length(NeededChannels);
     end
     
