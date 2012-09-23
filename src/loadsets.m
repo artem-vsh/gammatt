@@ -83,7 +83,6 @@ for FileOffset = 1:length(Files)
 end
 
 Sets = RawSets;
-%sets = groupsets(rawsets);
 
 end
 
