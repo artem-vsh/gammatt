@@ -7,6 +7,8 @@ function Sets = loadsets( Directory, Prefix, Delimiter, Suffix, varargin )
 %   - person_John_2ndTrial.mat
 %   - person_Jane_3rdTrial.mat
 %   will do.
+%
+%   DEPENDS ON: eeglab
 
 %% initialize input data
 Channels     = [];
