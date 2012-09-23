@@ -18,7 +18,10 @@ else
 end
 
 %% compute periodogram
-[ Power, Frequency ] = periodogram(signal, window, lSignal, Fs);
+[ PowerPerHz, Frequency ] = periodogram(signal, window, lSignal, Fs);
+
+%% convert power/hz to power
+Power = PowerPerHz .* Frequency;
 
 %% return
 PowerByFrequency = [ Frequency Power ];
