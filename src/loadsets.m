@@ -106,7 +106,7 @@ Sets = RawSets;
 
 end
 
-%% function to get channels with some specific labels
+%% function to get indicies of channels with some specific labels
 function Indices = GrepChannels(Labels, SourceChannels)
 
 % preallocate indicies
