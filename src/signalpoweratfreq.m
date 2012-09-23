@@ -11,8 +11,10 @@ else
     Deviations = FreqByPower(:, 1) - Freq;
     Left = Deviations == max(Deviations(Deviations < 0));
     Right = Deviations == min(Deviations(Deviations > 0));
-    if ~any(Left) || ~any(Right)
-        Power = [];
+    if ~any(Left)
+        Power = FreqByPower(Right, 2); % returns [] on ~Left && ~Right
+    elseif ~any(Right)
+        Power = FreqByPower(Left, 2);
     else
         Power = (FreqByPower(Left, 2) + FreqByPower(Right, 2)) / 2;
     end
