@@ -18,12 +18,10 @@ else
 end
 
 %% compute periodogram
-[ PowerPerHz, Frequency ] = periodogram(signal, window, lSignal, Fs);
-
-%% convert power/hz to power
-Power = PowerPerHz .* Frequency;
+Welch = spectrum.welch('Hann');
+Hmss = msspectrum(Welch, signal, 'NFFT', lSignal, 'Fs', Fs);
 
 %% return
-PowerByFrequency = [ Frequency Power ];
+PowerByFrequency = [ Hmss.Frequencies Hmss.Data ];
 
 end
