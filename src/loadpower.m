@@ -34,7 +34,7 @@ for ElectrodeOffset = 1:size(EEG.data, 1)
         SumPowerAtGivenFrequencies = 0;
         for Frequency = Frequencies
             SumPowerAtGivenFrequencies = SumPowerAtGivenFrequencies + ...
-                signalpoweratfreq(FrequencyByPower);
+                signalpoweratfreq(FrequencyByPower, Frequency);
         end
             
         Power(ElectrodeOffset, EpochOffset) = ...
