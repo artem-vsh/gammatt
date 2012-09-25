@@ -8,7 +8,8 @@ Structure = struct(  ...
     'person',    [], ...
     'trial',     [], ...
     'type',      [], ...
-    'electrode', []      );
+    'electrode', [], ...
+    'interval',  []      );
 
 for isets = 1:length(Sets)
     for itrial = 1:length(Sets{isets}.trial)
@@ -18,6 +19,7 @@ for isets = 1:length(Sets)
         Structure.trial     = [Structure.trial     Sets{isets}.trial{itrial}.trial    ];
         Structure.type      = [Structure.type      Sets{isets}.trial{itrial}.type     ];
         Structure.electrode = [Structure.electrode Sets{isets}.trial{itrial}.electrode];
+        Structure.interval  = [Structure.interval  Sets{isets}.trial{itrial}.interval ];
     end
 end
 
